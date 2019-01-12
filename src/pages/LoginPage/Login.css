@@ -1,0 +1,10 @@
+.loginContainer {
+    background-image: url("/images/circusBG.jpg"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 100%; /* You must set a specified height */
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

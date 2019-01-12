@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+
 var config = {
     apiKey: "AIzaSyDtJFRipXT4endfRmgiXHRJRTDaZIViKhk",
     authDomain: "braingame-495ed.firebaseapp.com",
@@ -7,5 +8,7 @@ var config = {
     storageBucket: "braingame-495ed.appspot.com",
     messagingSenderId: "20617174234"
   };
-var fire = firebase.initializeApp(config);
+const fire = firebase.initializeApp(config);
+
+
 export default fire;
