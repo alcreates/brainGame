@@ -5,6 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
+import fire from '../../../fire';
+import './Login.css';
 
 const styles = theme => ({
     container: {
@@ -14,13 +17,14 @@ const styles = theme => ({
     textField: {
       marginLeft: theme.spacing.unit,
       marginRight: theme.spacing.unit,
-      width: 200,
-    },
-    dense: {
-      marginTop: 19,
+      width: 100+ "%",
     },
     button: {
         margin: theme.spacing.unit,
+        float: "right",
+        fontFamily: 'circus',
+        color: 'white',
+        backgroundColor: '#1C71A7'
       },
    
   });
@@ -34,35 +38,56 @@ class SignIn extends Component {
     }, ()=>{ console.log(this.state)})
   }
   handleSubmit = () => {
-      alert("sign in works")
+    fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if( errorCode || errorMessage){
+        alert(errorCode)
+      }
+      alert("user added")
+    
+    });
+    
   }
   render() {
     const { classes } = this.props;
     return (
-        <form className={classes.container} noValidate autoComplete="off">
-        <TextField
-          id="standard-name"
-          label="UserName"
-          name= "name"
-          className={classes.textField}
-          value={this.state.name}
-          onChange={this.handleChange}
-          margin="normal"
-        />
-        <TextField
-          id="password"
-          label="Password"
-          name= "password"
-          className={classes.textField}
-          value={this.state.password}
-          onChange={this.handleChange}
-          margin="normal"
-        />
-        <Button onClick={this.handleSubmit} variant="contained" className={classes.button}>
-        Sign In 
-      </Button>
-       
-      </form>
+        <div className="login">
+            <div className="loginTitle">Login</div>
+           <div>
+            <TextField
+              id="standard-name"
+              label="Email"
+              name= "email"
+              className={classes.textField}
+              value={this.state.email}
+              onChange={this.handleChange}
+              margin="normal"
+            />
+          </div>
+          <div>
+            <TextField
+              id="password"
+              label="Password"
+              name= "password"
+              className={classes.textField}
+              value={this.state.password}
+              onChange={this.handleChange}
+              margin="normal"
+            />
+          </div>
+          <div>
+            <Link className="reg" to="/register">Register</Link>
+          </div>
+          <div>
+            
+            <Button onClick={this.handleSubmit} variant="contained" className={classes.button}>
+               Sign In 
+            </Button>
+          </div>
+          
+      </div>
     )
   }
 }

@@ -9,6 +9,10 @@ html {
 #root { 
   height: 100%;
 }
+@font-face {
+  font-family: "circus";
+  src: url("/fonts/circus.ttf");
+  }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
