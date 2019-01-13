@@ -10,9 +10,12 @@ class Login extends React.Component {
 
     render(){
         return(
-        <div className="loginContainer"> 
+        <div className="loginPage" > 
+          <div className="welcome"> Welcome to Circus Ole</div>
+          <div className="loginContainer">
           <SignIn/>
-         </div>)
+          </div>
+        </div>)
     }
 }
 
