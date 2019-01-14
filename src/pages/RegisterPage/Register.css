@@ -1,0 +1,18 @@
+.regPage {
+    background-image: url("/images/reg.jpg"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 100%; /* You must set a specified height */
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    display: flex;
+   flex-direction: column;
+  
+ }
+
+ .regTitle {
+    font-family: 'circus';
+    font-size: 60px;
+    display: flex;
+    padding-top:120px;
+    justify-content: center;
+}

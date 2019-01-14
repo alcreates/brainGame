@@ -1,0 +1,19 @@
+
+
+.gamePage {
+    background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/BuKKyFq/videoblocks-circus-starburst-looped-animation-grunge-background_svsgyofrg_thumbnail-full01.png"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 100%; /* You must set a specified height */
+    background-repeat: no-repeat; 
+    background-size: cover; 
+  
+    
+ }
+.gameArea {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 100px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+     
+}

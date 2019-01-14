@@ -1,8 +1,44 @@
 import React, { Component } from 'react';
 import './App.css';
-import Login from './pages/LoginPage/LoginPage';
-import Game from './pages/GamePage/GamePage';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LoginPage from './pages/LoginPage/LoginPage';
+import GamePage from './pages/GamePage/GamePage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import fire from "./fire";
+
+fire.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    console.log('User is signed in');
+  
+    // ...
+  } else {
+    // User is signed out.
+    // ...
+    console.log('user is signed out');
+   
+  }
+});
+function PrivateRoute({ component: Component, ...rest }) {
+ 
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        fire.auth().currentUser ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  );
+}
 
 //need to add game as a protected route.
 class App extends Component {
@@ -12,8 +48,10 @@ class App extends Component {
 
       <Router>
         <Switch>
-          <Route path="/" exact component={Login} />
-          <Route path="/game" exact component={Game} />
+          <Route path="/" exact component={LoginPage} />
+          {/* <PrivateRoute path="/game" component={GamePage} /> */}
+          <Route exact path="/game" component={GamePage} />
+          <Route path="/register" exact component={RegisterPage} />
         </Switch>
       </Router>
        

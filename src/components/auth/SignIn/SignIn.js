@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import fire from '../../../fire';
 import './Login.css';
 
@@ -31,22 +31,40 @@ const styles = theme => ({
   
 
 class SignIn extends Component {
-    state = {}
+    state = {
+      redirect: false
+    }
   handleChange = (event) => {
     this.setState({
         [event.target.name] : event.target.value
     }, ()=>{ console.log(this.state)})
   }
+  renderRedirect(){
+    if(this.state.redirect){
+      return <Redirect to='/game' />
+    }
+  
+  }
   handleSubmit = () => {
-    fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
+    console.log("in handle submit")
+    fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+    .then((user) => {
+     
+        
+      this.setState({
+        redirect: true
+      })
+     
+        //redirect the user to protected game route
+    }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      if( errorCode || errorMessage){
-        alert(errorCode)
+      if(errorMessage){
+        alert(errorMessage)
       }
-      alert("user added")
-    
+      console.log('signed in');
+      // ...
     });
     
   }
@@ -54,6 +72,7 @@ class SignIn extends Component {
     const { classes } = this.props;
     return (
         <div className="login">
+          {this.renderRedirect() }
             <div className="loginTitle">Login</div>
            <div>
             <TextField
