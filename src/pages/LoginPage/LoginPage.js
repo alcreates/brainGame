@@ -11,7 +11,7 @@ class Login extends React.Component {
     render(){
         return(
         <div className="loginPage" > 
-          <div className="welcome"> Welcome to Circus Ole</div>
+          <div className="welcome"> Welcome to Mind Circus</div>
           <div className="loginContainer">
           <SignIn/>
           </div>

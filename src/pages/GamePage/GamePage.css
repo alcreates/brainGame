@@ -17,3 +17,18 @@
     padding-bottom: 0px;
      
 }
+.highScoreTitle {
+    font-family: 'circus';
+    text-align: center;
+}
+.scores {
+    display: flex;
+    justify-content: center;
+}
+.scores div {
+    font-family: 'circus';
+    margin: 25px;
+}
+.Game-paper-1 {
+    background-color: blanchedalmond;
+}

@@ -45,6 +45,12 @@ class SignIn extends Component {
     }
   
   }
+  handleKeyPress = (event)=> {
+    if(event.key == 'Enter'){
+      this.handleSubmit()
+    }
+  }
+
   handleSubmit = () => {
     console.log("in handle submit")
     fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
@@ -94,6 +100,8 @@ class SignIn extends Component {
               value={this.state.password}
               onChange={this.handleChange}
               margin="normal"
+              onKeyPress={this.handleKeyPress} 
+              type="password"
             />
           </div>
           <div>

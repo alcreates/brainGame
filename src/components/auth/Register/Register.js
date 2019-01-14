@@ -44,6 +44,12 @@ class Register extends Component {
     }
   
   }
+  handleKeyPress = (event)=> {
+    if(event.key == 'Enter'){
+      this.handleSubmit()
+    }
+  }
+
   handleSubmit = () => {
     fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
     .then((user)=>{
@@ -88,6 +94,7 @@ class Register extends Component {
                     value={this.state.password}
                     onChange={this.handleChange}
                     margin="normal"
+                    onKeyPress={this.handleKeyPress} 
                     />
                 </div>
            

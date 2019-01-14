@@ -49,8 +49,9 @@ class App extends Component {
       <Router>
         <Switch>
           <Route path="/" exact component={LoginPage} />
-          {/* <PrivateRoute path="/game" component={GamePage} /> */}
-          <Route exact path="/game" component={GamePage} />
+          <PrivateRoute path="/game" component={GamePage} />
+          
+          {/* <Route exact path="/game" component={GamePage} /> */}
           <Route path="/register" exact component={RegisterPage} />
         </Switch>
       </Router>
